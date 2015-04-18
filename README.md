@@ -22,3 +22,7 @@ Install:
  
 Run:
  * node server.js
+
+## License
+ * MIT
+
