@@ -1,0 +1,121 @@
+/*jslint devel:true*/
+/*global require, socket, module, Buffer */
+
+(function () {
+	"use strict";
+	var packet = {
+        NONE : 0,
+        GET_LDB_CAT : 1,
+        GET_LDB_MAT_PREVIEW : 2,
+        GET_LDB_MAT : 3,
+
+        ERROR_PACKET : 4,
+        DESCRIPTION  : 5,
+        SET_LIC_DATA : 6,
+        RESET        : 7,
+        CLEAR        : 8,
+        START        : 9,
+        STOP         : 10,
+        UPDATE       : 11,
+        PAUSE        : 12,
+        GET_IMAGE    : 13,
+        GET_SAMPLES  : 14,
+
+        LOAD_GPU     : 15,
+        LOAD_KERNEL  : 16,
+        LOAD_THIN_LENS_CAMERA  : 17,
+        LOAD_PANORAMIC_CAMERA  : 18,
+        //LOAD_IMAGER,
+        //LOAD_POSTPROCESSOR,
+        LOAD_SUNSKY  : 19,
+        LOAD_FILE    : 20,
+
+        FIRST_NAMED_PACKET : 21,
+        LOAD_GLOBAL_MESH   : 21, // FIRST_NAMED_PACKET
+        DEL_GLOBAL_MESH    : 22,
+        LOAD_LOCAL_MESH    : 23,
+        DEL_LOCAL_MESH     : 24,
+        LOAD_GEO_MAT       : 25,
+        DEL_GEO_MAT        : 26,
+        LOAD_GEO_SCATTER   : 27,
+        DEL_GEO_SCATTER    : 28,
+        LOAD_IMAGE_FILE    : 29,
+
+        LOAD_MATERIAL_FIRST    : 30,
+        LOAD_DIFFUSE_MATERIAL  : 30, //LOAD_MATERIAL_FIRST
+        LOAD_GLOSSY_MATERIAL   : 31,
+        LOAD_SPECULAR_MATERIAL : 32,
+        LOAD_MIX_MATERIAL      : 33,
+        LOAD_PORTAL_MATERIAL   : 34,
+        LOAD_MATERIAL_LAST     : 34, //LOAD_PORTAL_MATERIAL
+        DEL_MATERIAL           : 35,
+
+        LOAD_TEXTURE_FIRST     : 36,
+        LOAD_FLOAT_TEXTURE     : 37,//LOAD_TEXTURE_FIRST,
+        LOAD_RGB_SPECTRUM_TEXTURE : 38,
+        LOAD_GAUSSIAN_SPECTRUM_TEXTURE : 39,
+        LOAD_CHECKS_TEXTURE : 40,
+        LOAD_MARBLE_TEXTURE : 41,
+        LOAD_RIDGED_FRACTAL_TEXTURE : 42,
+        LOAD_SAW_WAVE_TEXTURE  : 43,
+        LOAD_SINE_WAVE_TEXTURE : 44,
+        LOAD_TRIANGLE_WAVE_TEXTURE : 45,
+        LOAD_TURBULENCE_TEXTURE : 46,
+        LOAD_CLAMP_TEXTURE      : 47,
+        LOAD_COSINE_MIX_TEXTURE : 48,
+        LOAD_INVERT_TEXTURE     : 49,
+        LOAD_MIX_TEXTURE     : 50,
+        LOAD_MULTIPLY_TEXTURE  : 51,
+        LOAD_IMAGE_TEXTURE     : 52,
+        LOAD_ALPHA_IMAGE_TEXTURE : 53,
+        LOAD_FLOAT_IMAGE_TEXTURE : 54,
+        LOAD_FALLOFF_TEXTURE : 55,
+        LOAD_COLOR_CORRECT_TEXTURE : 56,
+        LOAD_DIRT_TEXTURE : 57,
+        LOAD_GRADIENT_TEXTURE : 58,
+        LOAD_TEXTURE_LAST : 58,// LOAD_GRADIENT_TEXTURE,
+        DEL_TEXTURE : 59,
+
+        LOAD_EMISSION_FIRST : 60,
+        LOAD_BLACKBODY_EMISSION : 60, //LOAD_EMISSION_FIRST
+        LOAD_TEXTURE_EMISSION : 61,
+        LOAD_EMISSION_LAST : 61,//LOAD_TEXTURE_EMISSION,
+        DEL_EMISSION : 62,
+
+        LOAD_TRANSFORM_FIRST : 63,
+        LOAD_SCALE_TRANSFORM : 63, //LOAD_TRANSFORM_FIRST,
+        LOAD_ROTATION_TRANSFORM : 64,
+        LOAD_FULL_TRANSFORM : 65,
+        LOAD_2D_TRANSFORM : 66,
+        LOAD_3D_TRANSFORM : 67,
+        LOAD_TRANSFORM_LAST : 67,// LOAD_3D_TRANSFORM,
+        DEL_TRANSFORM : 68,
+
+        LOAD_MEDIUM_FIRST : 69,
+        LOAD_ABSORPTION_MEDIUM : 69,// LOAD_MEDIUM_FIRST,
+        LOAD_SCATTERING_MEDIUM : 70,
+        LOAD_MEDIUM_LAST : 70, // = LOAD_SCATTERING_MEDIUM,
+        DEL_MEDIUM : 71,
+
+        LOAD_PROJECTION_FIRST : 72,
+        LOAD_PROJECTION_XYZ : 72, // LOAD_PROJECTION_FIRST,
+        LOAD_PROJECTION_BOX : 73,
+        LOAD_PROJECTION_CYL : 74,
+        LOAD_PROJECTION_PERSP : 75,
+        LOAD_PROJECTION_SPHERICAL : 76,
+        LOAD_PROJECTION_UVW : 77,
+        LOAD_PROJECTION_LAST : 77,// LOAD_PROJECTION_UVW,
+        DEL_PROJECTION : 78,
+
+        LOAD_VALUE_FIRST : 79,
+        LOAD_VALUE_FLOAT : 79,// = LOAD_VALUE_FIRST,
+        LOAD_VALUE_INT : 80,
+        LOAD_VALUE_LAST : 80, // LOAD_VALUE_INT,
+        DEL_VALUE : 81,
+
+        LAST_NAMED_PACKET : 81,// = DEL_VALUE,
+
+        LAST_PACKET_TYPE : 81// LAST_NAMED_PACKET
+    };
+	module.exports = packet;
+}());
