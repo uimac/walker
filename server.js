@@ -11,7 +11,8 @@ var fs = require('fs'),
     current_socket = null,
     ptype = require('./packettype.js'),
     addon = require('bindings')('umnode.node'),
-    isDebug = false;
+    isDebug = false,
+    is_exporting_alembic = false;
 
 console.log(ptype);
 server.maxConnections = 3;
@@ -314,8 +315,7 @@ server.on('connection', function (socket) {
     var address = server.address(),
         res = new Buffer(8 * 2),
         res_version = new Buffer(4 * 2),
-        loading = new_loading(),
-        is_exporting_alembic = false;
+        loading = new_loading();
     console.log('TCP Server listening');// ' + address.address + ":" + address.port);
     console.log(socket.bufferSize);
     
@@ -461,6 +461,7 @@ server.on('connection', function (socket) {
             current_socket.end();
             current_socket = null;
             console.log("socket connect END");
+            loading = new_loading();
         }
     });
     if (current_socket) {
